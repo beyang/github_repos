@@ -105,7 +105,7 @@ func traunch(lang string, maxStars int, iter int) (nextMaxStars int) {
 			for _, item := range r.Items {
 				repoNames = append(repoNames, item.FullName)
 			}
-			if err := ioutil.WriteFile(outfile, []byte(strings.Join(repoNames, "\n")), 0644); err != nil {
+			if err := ioutil.WriteFile(outfile, []byte(strings.Join(repoNames, "\n")+"\n"), 0644); err != nil {
 				log.Fatal(err)
 			}
 			log.Printf("...Queried %s, %d - %d", lang, start, end)
