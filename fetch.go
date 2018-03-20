@@ -27,7 +27,7 @@ func init() {
 	go func() {
 		for {
 			limiter <- struct{}{}
-			time.Sleep(time.Second)
+			time.Sleep(2 * time.Second)
 		}
 	}()
 }
@@ -51,6 +51,22 @@ func run() {
 	}
 	wg.Wait()
 }
+
+// type LangRunner struct {
+// 	lang     string
+// 	iter     int
+// 	i        int
+// 	maxStars int
+// }
+
+// func (r LangRunner) run() {
+// 	for ; r.iter < 10; r.iter++ {
+// 		maxStars = r.traunch()
+// 		if maxStars == 0 {
+// 			break
+// 		}
+// 	}
+// }
 
 func traunch(lang string, maxStars int, iter int) (nextMaxStars int) {
 	var wg sync.WaitGroup
